@@ -70,3 +70,49 @@ Proof:
         a + b ≤ a + c
       ≡⟨ Induction hypothesis ⟩
         b ≤ c
+ 
+---------------------------
+3.1.14
+        
+Theorem “Monotony of -”: a ≤ b ⇒ a - c ≤ b - c
+Proof:
+  By induction on `a : ℕ`:
+    Base case:
+        0 ≤ b ⇒ 0 - c ≤ b - c
+      =⟨ “Zero is least element”⟩
+         true ⇒ 0 - c ≤ b - c
+      =⟨ “Left-identity of ⇒”⟩
+         0 - c ≤ b - c
+      =⟨ “Subtraction from zero”⟩ 
+         0 ≤ b - c
+      =⟨ “Zero is least element”⟩
+         true
+    Induction step:
+      By induction on `b : ℕ`:
+        Base case: 
+            S a ≤ 0 ⇒ S a - c ≤ 0 - c
+          =⟨ “Successor is not at most zero”⟩
+            false ⇒ S a - c ≤ 0 - c
+          =⟨ “ex falso quodlibet”⟩
+            true 
+        Induction step:
+          By induction on `c : ℕ`:
+            Base case: 
+                S a ≤ S b ⇒ S a - 0 ≤ S b - 0
+              =⟨ “Isotony of successor”⟩
+                a ≤ b ⇒ S a - 0 ≤ S b - 0
+              =⟨ “Right-identity of subtraction”⟩
+                a ≤ b ⇒ S a ≤ S b
+              =⟨ “Isotony of successor”⟩
+                a ≤ b ⇒ a ≤ b
+              =⟨“Reflexivity of ⇒”⟩
+                true 
+            Induction step:
+                S a ≤ S b ⇒ S a - S c ≤ S b - S c
+              =⟨ “Isotony of successor”⟩
+                a ≤ b ⇒ S a - S c ≤ S b - S c
+              =⟨ “Subtraction of successor from successor”⟩ 
+                a ≤ b ⇒ a - c ≤ b - c
+              =⟨ Induction hypothesis `a ≤ b ⇒ a - c ≤ b - c`⟩
+                true 
+                    
